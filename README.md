@@ -22,14 +22,10 @@ The 4:1 multiplexers select the appropriate bit based on shift amount:
 - s1 s0 = 11 → Shift right by 3
 
 ### Logic for each output:
-y3 = MUX(w3, w2, w1, w0, s1, s0)
-y2 = MUX(w2, w1, w0, w3, s1, s0)
-y1 = MUX(w1, w0, w3, w2, s1, s0)
-y0 = MUX(w0, w3, w2, w1, s1, s0)
-
-yaml
-Copy
-Edit
+y3 = MUX(w3, w2, w1, w0, s1, s0);
+y2 = MUX(w2, w1, w0, w3, s1, s0);
+y1 = MUX(w1, w0, w3, w2, s1, s0);
+y0 = MUX(w0, w3, w2, w1, s1, s0);
 
 ## Truth Table for Control Signals
 | s1 | s0 | Operation   |
@@ -41,22 +37,18 @@ Edit
 
 ## Instantiation Explanation
 The barrel shifter uses 4 multiplexers (mux4_1) for each output:  
-- y3: Selects between (w3, w2, w1, w0)
-- y2: Selects between (w2, w1, w0, w3)
-- y1: Selects between (w1, w0, w3, w2)
-- y0: Selects between (w0, w3, w2, w1)
+- y3: Selects between (w3, w2, w1, w0);
+- y2: Selects between (w2, w1, w0, w3);
+- y1: Selects between (w1, w0, w3, w2);
+- y0: Selects between (w0, w3, w2, w1);
 
 This arrangement ensures rotational shifting instead of losing bits.
 
 ### Simulation Results (TCL Console)
-time=0 w3=1 w2=0 w1=1 w0=0 s1=0 s0=0 y3=1 y2=0 y1=1 y0=0
-time=10000 w3=1 w2=0 w1=1 w0=0 s1=0 s0=1 y3=0 y2=1 y1=0 y0=1
-time=20000 w3=1 w2=0 w1=1 w0=0 s1=1 s0=0 y3=1 y2=0 y1=1 y0=0
-time=30000 w3=1 w2=0 w1=1 w0=0 s1=1 s0=1 y3=0 y2=1 y1=0 y0=1
-
-markdown
-Copy
-Edit
+time=0 w3=1 w2=0 w1=1 w0=0 s1=0 s0=0 y3=1 y2=0 y1=1 y0=0;
+time=10000 w3=1 w2=0 w1=1 w0=0 s1=0 s0=1 y3=0 y2=1 y1=0 y0=1;
+time=20000 w3=1 w2=0 w1=1 w0=0 s1=1 s0=0 y3=1 y2=0 y1=1 y0=0;
+time=30000 w3=1 w2=0 w1=1 w0=0 s1=1 s0=1 y3=0 y2=1 y1=0 y0=1;
 
 ## Tools Used
 - Language: Verilog HDL
