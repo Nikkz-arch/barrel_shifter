@@ -5,21 +5,21 @@ This project implements a 4-bit Barrel Shifter using 4:1 multiplexers in Verilog
 A barrel shifter allows rotational shifting of bits by a specified amount in a single clock cycle without using multiple shift operations.
 
 ## In this design:
-Inputs: w3 w2 w1 w0 (4-bit data)
-Shift control: s1 s0 (2-bit select line)
-Output: y3 y2 y1 y0 (shifted data)
+Inputs: w3 w2 w1 w0 (4-bit data).
+Shift control: s1 s0 (2-bit select line).
+Output: y3 y2 y1 y0 (shifted data).
 
 ## Files Included
-barrel_shifter.v – RTL design of the 4-bit Barrel Shifter
-testbench.v – Testbench for functional verification
-/screenshots/ – Simulation results and waveform analysis
+barrel_shifter.v – RTL design of the 4-bit Barrel Shifter.
+testbench.v – Testbench for functional verification.
+/screenshots/ – Simulation results and waveform analysis.
 
 ## How It Works
 The 4:1 multiplexers select the appropriate bit based on shift amount:
-s1 s0 = 00 → No shift
-s1 s0 = 01 → Shift right by 1
-s1 s0 = 10 → Shift right by 2
-s1 s0 = 11 → Shift right by 3
+s1 s0 = 00 → No shift.
+s1 s0 = 01 → Shift right by 1.
+s1 s0 = 10 → Shift right by 2.
+s1 s0 = 11 → Shift right by 3.
 
 ### Logic for each output:
 y3 = MUX(w3, w2, w1, w0, s1, s0)
